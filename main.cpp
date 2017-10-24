@@ -7,15 +7,21 @@
 #include "Adafruit_SSD1306.h"
 #include "Adafruit_GFX.h"
 
+// Turn on the LED indicator
 DigitalOut led3(LED3);
+
+// Initialize USB connection
 USBHID hid(64,64,0x1234,0x0006,0x0001,false);
 HID_REPORT recv;
-// main() runs in its own thread in the OS
 Thread thd_hid;
 
+// Default communication protocol is I2C. Comment this part to run the application under SPI communication protocol
 I2C I2c_oled(P2_6,P2_7);
-//SPI,DC,RST,CS
 Adafruit_SSD1306_I2c oled(I2c_oled,P2_6);
+
+// Uncomment this part to run the application under SPI communication protocol
+// SPI spi_oled(SPI0_MOSI,NC,SPI0_SCK);
+// Adafruit_SSD1306_Spi oled(spi_oled,P2_7,P2_6,SPI0_SS);
 
 const unsigned char unyte[128][8] = {
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
@@ -612,7 +618,7 @@ const unsigned char leaf5[128][8] = {
 int main() {
 oled.clearDisplay();
 
-double frame_time=0.2;
+double frame_time=0.2;  // Default frame time is 0.2 seconds
         
 while(true){
 oled.drawBitmap(0,0,*unyte,128,64,1);
