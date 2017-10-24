@@ -23,6 +23,7 @@ Adafruit_SSD1306_I2c oled(I2c_oled,P2_6);
 // SPI spi_oled(SPI0_MOSI,NC,SPI0_SCK);
 // Adafruit_SSD1306_Spi oled(spi_oled,P2_7,P2_6,SPI0_SS);
 
+// Each of the 13 frames is configured using a bitmap.
 const unsigned char unyte[128][8] = {
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
@@ -619,8 +620,8 @@ int main() {
 oled.clearDisplay();
 
 double frame_time=0.2;  // Default frame time is 0.2 seconds
-        
-while(true){
+
+while(true){    // Animation loop
 oled.drawBitmap(0,0,*unyte,128,64,1);
 oled.display();
 wait(3);
