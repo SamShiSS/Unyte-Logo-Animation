@@ -17,7 +17,6 @@ I2C I2c_oled(P2_6,P2_7);
 //SPI,DC,RST,CS
 Adafruit_SSD1306_I2c oled(I2c_oled,P2_6);
 
-  
 const unsigned char unyte[128][8] = {
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
@@ -612,24 +611,6 @@ const unsigned char leaf5[128][8] = {
 
 int main() {
 oled.clearDisplay();
-/*
-oled.drawChar(1,10,'U',1,1,4);
-oled.display();
-        wait(.5);
-        oled.drawChar(26,10,'N',1,1,4);
-        oled.display();
-        wait(.5);
-                oled.drawChar(51,10,'Y',1,1,4);
-                oled.display();
-        wait(.5);
-        oled.drawChar(76,10,'T',1,1,4);
-        oled.display();
-        wait(.5);
-        oled.drawChar(101,10,'E',1,1,4);
-        oled.display();
-oled.clearDisplay();
-*/
-
 
 double frame_time=0.2;
         
@@ -703,5 +684,4 @@ oled.drawBitmap(0,0,*blank,128,64,1);
 oled.display();
 wait(1);
 }
-
 }
